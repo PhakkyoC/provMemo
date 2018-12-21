@@ -5,14 +5,8 @@ import { createStore,applyMiddleware } from 'redux'
 import gameApp from './Reducers'
 import App from './components/App'
 import thunk from 'redux-thunk';
-import {
-    getDeck,
-} from './Actions';
-const store = createStore(gameApp, applyMiddleware(thunk));
 
-const unsubscribe = store.subscribe(() => console.log(store.getState()))
-store.dispatch(getDeck);
-unsubscribe();
+const store = createStore(gameApp, applyMiddleware(thunk));
 
 render(
     <Provider store={store}>

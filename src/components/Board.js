@@ -6,13 +6,21 @@ class Board extends Component {
     constructor(props) {
         super(props)
     }
+    componentDidMount() {
+        const {loadDeck} = this.props;
+        loadDeck(0)
+    }
     render() {
         const { cards, onCardClick } = this.props;
         return(
-            <ul>{cards.map((card, index) => (
-                    <Card key={index} {...card} onClick={() => onCardClick(index)} />
-                ))}
-            </ul>
+            <div style={{
+                display: "flex",
+                flexWrap: "wrap"
+            }}
+            >{cards.map((card) => (
+                <Card key={card.id} {...card} onClick={() => onCardClick(card.id,card.value)} />
+            ))}
+            </div>
         )
     }
 }
