@@ -11,11 +11,12 @@ class GameStats extends Component {
             clockTimer(0);
         }, 1000);
     }
-
     render() {
         const { timer,score} = this.props;
         return(
-            <div> seconde(s) restantes : {timer} &nbsp;&nbsp;&nbsp; score : {score}</div>
+            <div> seconde(s) restantes : {timer} &nbsp;&nbsp;&nbsp; score : {score}
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<button onClick={() => window.location.reload()}>restart</button>
+            </div>
         )
     }
 }

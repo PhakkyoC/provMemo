@@ -61,14 +61,19 @@ export function cardFlip(id) {
 }
 
 export function updateTimer() {
-    return function (dispatch){
-        return dispatch({type: TIMER})
+    return function (dispatch,getState){
+        if (getState().game.timer>0){
+            return dispatch({type: TIMER})
+        }
     }
 }
 
 function check(state,id,value) {
     let flipped = state.game.flipped;
-    if (flipped.id!=id && flipped.value==value)
+    if(state.game.timer<=0){
+        return {type: NONE}
+    }
+    else if (flipped.id!=id && flipped.value==value)
     {
         return (dispatch) => {
             dispatch(updateCardGame(value,id))
